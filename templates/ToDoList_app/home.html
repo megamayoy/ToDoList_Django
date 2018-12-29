@@ -1,0 +1,49 @@
+{% extends 'ToDoList_app/base.html' %}
+
+
+
+{% block content_block %}
+
+    {%if messages %}
+
+       {% for message in messages %}
+           <div class="alert alert-success">
+
+                <strong>Success!</strong> {{message}}
+
+          </div>
+       {% endfor%}
+
+    {% endif %}
+
+    {% if list_items  %}
+
+           <table class="table table-hover">
+               {% for list_item in list_items %}
+
+              <tr>
+
+                  {%if list_item.completed %}
+                    <td style="text-decoration: line-through"> {{ list_item.item_content | title }} </td>
+                  {% else %}
+                    <td > {{ list_item.item_content | title }} </td>
+                  {% endif %}
+
+
+                <td>
+                    <a href="{% url 'ToDoList_app:edit_item' list_item.id %}" class="btn btn-primary" role="button"> Edit </a>
+                    <a href="{% url 'ToDoList_app:delete_list_item' list_item.id %}" class="btn btn-danger" role="button">Delete </a>
+                    {%if list_item.completed %}
+                     <a href="{% url 'ToDoList_app:uncross_item' list_item.id %}" class="btn btn-warning" role="button"> Uncross </a>
+                    {% else %}
+                     <a href="{% url 'ToDoList_app:crossoff_item' list_item.id %}" class="btn btn-warning" role="button"> Cross Off </a>
+                    {% endif %}
+                </td>
+
+              </tr>
+                {% endfor %}
+          </table>
+
+    {% endif %}
+
+{% endblock %}

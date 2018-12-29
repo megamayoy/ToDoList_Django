@@ -1,0 +1,18 @@
+{% extends 'ToDoList_app/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content_block %}
+
+
+   <form  method="POST" >
+
+       {% csrf_token %}
+
+        {{ edit_form|crispy }}
+
+      <button type="submit" class="btn btn-success" > Update </button>
+</form>
+
+
+{% endblock %}
