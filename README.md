@@ -1,5 +1,5 @@
 # ToDoList_Django
-a simple to-do list app to get familiar with CRUD using Django and django-crispy-forms
+a simple to-do list app to get familiar with CRUD using Django and django-crispy-forms. python version = 3.7
 
 <br>
 
